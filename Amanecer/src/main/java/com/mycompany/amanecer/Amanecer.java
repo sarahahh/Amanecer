@@ -3,7 +3,7 @@
  */
 
 package com.mycompany.amanecer;
-
+import View.Principal;
 /**
  *
  * @author USUARIO
@@ -12,5 +12,7 @@ public class Amanecer {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        Principal ventanaPrincipal = new Principal();
+        ventanaPrincipal.setVisible(true);
     }
 }

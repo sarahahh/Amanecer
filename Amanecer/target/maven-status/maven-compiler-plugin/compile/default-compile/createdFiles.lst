@@ -36,6 +36,8 @@ View\Principal.class
 Controller\ManejoJson$1.class
 View\BuscarFactura.class
 View\BuscarMulta$2.class
+View\EspaciosComunes$4.class
+View\RegistroPropietario$9.class
 View\RegistroPropietario$3.class
 com\mycompany\amanecer\Amanecer.class
 View\GenerarFactura$1.class
@@ -46,12 +48,14 @@ View\Propietario$3.class
 View\BuscarMulta.class
 View\EspaciosComunes$1.class
 Model\Multa.class
+View\AdminPropiedad$5.class
 View\InicioSesion$1.class
 View\Administrador$3.class
 View\Principal$2.class
 View\Administrador.class
 Controller\ManejoJson.class
 View\GenerarFactura$2.class
+View\GenerarMulta$4.class
 View\InicioSesion$4.class
 View\RegistroPropietario$8.class
 View\BuscarMulta$3.class
@@ -72,6 +76,7 @@ View\GenerarFactura$3.class
 View\RegistroPropietario$5.class
 View\Administrador$6.class
 Controller\ManejoJson$2.class
+View\GenerarFactura$6.class
 View\Empleado.class
 View\GenerarMulta.class
 View\GenerarMulta$1.class
