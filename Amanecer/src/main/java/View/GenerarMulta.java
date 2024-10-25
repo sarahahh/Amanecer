@@ -5,7 +5,9 @@
 package View;
 
 import Controller.ManejoPDFMulta;
+import Controller.Validaciones;
 import Model.Multa;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,7 +61,7 @@ public class GenerarMulta extends javax.swing.JFrame {
         jLabel2.setText("Codigo de la multa:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Persona:");
+        jLabel3.setText("Nombre persona:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Fecha de la multa:");
@@ -214,23 +216,31 @@ public class GenerarMulta extends javax.swing.JFrame {
         String valorMulta = ValorMulta.getText();
         String fechaMaxPago = FechaMaxPago.getText();
         
-        // Crear una instancia de ManejoPDF
+        // Crear una instancia de la clase Validaciones
+        Validaciones validaciones = new Validaciones();
+
+        // Validar los datos ingresados antes de continuar
+        boolean datosValidos = validaciones.validarDatosMulta(
+            codigoMulta, persona, fechaMulta, propiedad, 
+            fechaEventoMulta, evento, valorMulta, fechaMaxPago
+        );
+
+        if (!datosValidos) {
+            // Si los datos no son válidos, se detiene el proceso
+            return;
+        }
+
+        // Crear una instancia de ManejoPDFMulta
         ManejoPDFMulta ventanaManejoPDFMulta = new ManejoPDFMulta();
 
-        // Guardar la factura en el archivo JSON
-        ventanaManejoPDFMulta.guardarMulta(codigoMulta, persona, fechaMulta, propiedad, fechaEventoMulta, evento, valorMulta, fechaMaxPago);
+        // Guardar la multa en el archivo JSON
+        ventanaManejoPDFMulta.guardarMulta(codigoMulta, persona, fechaMulta, propiedad, 
+                                            fechaEventoMulta, evento, valorMulta, fechaMaxPago);
 
-        // Buscar la factura recién guardada por su número y asignarla a una variable
-        Multa multa = ventanaManejoPDFMulta.buscarMulta(codigoMulta);
-
-        // Verificar si la factura fue encontrada antes de intentar generar el PDF
-        if (multa != null) {
-            // Generar el PDF con los datos encontrados
-            ventanaManejoPDFMulta.generarPDFMulta(multa);
-        } else {
-            System.err.println("No se encontró la factura con el número: " + codigoMulta);
-        }
-        
+        // Generar el PDF de la multa inmediatamente después de guardarla
+        ventanaManejoPDFMulta.generarPDFMulta(new Multa(codigoMulta, persona, fechaMulta, 
+                                                         propiedad, fechaEventoMulta, 
+                                                         evento, valorMulta, fechaMaxPago));
     }//GEN-LAST:event_bGuardarMultaActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author USUARIO
  */
 public class Validaciones {
-    public boolean validarDatos(String nombre, String tipoDocumento, String edad, String documento, 
+    public boolean validarDatosRegistro(String nombre, String tipoDocumento, String edad, String documento, 
         String correo, String telefono, String propiedad, String ocupacion) {
 
         // Validar que todos los campos estén llenos
@@ -73,7 +73,112 @@ public class Validaciones {
         // Si todas las validaciones pasan
         return true;
     }
+    
+    public boolean validarDatosFactura(String propietario, String numeroDocumento, String numeroFactura, String fechaFactura,
+        String propiedad, String valorMetroCuadrado, String valorAdministracion, String fechaMaxPago, String totalPagar) {
 
+        // Verificar si algún campo está vacío
+        if (estaVacio(propietario, numeroDocumento, numeroFactura, fechaFactura, 
+                      propiedad, valorMetroCuadrado, valorAdministracion, 
+                      fechaMaxPago, totalPagar)) {
+            mostrarError("Todos los campos son obligatorios.");
+            return false;
+        }
+
+        // Validar que el propietario solo contenga letras y espacios
+        if (!propietario.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+            mostrarError("El nombre del propietario solo debe contener letras y espacios.");
+            return false;
+        }
+
+        // Validar que el número de documento sea numérico y tenga máximo 10 dígitos
+        if (!esNumerico(numeroDocumento) || numeroDocumento.length() > 10) {
+            mostrarError("El número de documento debe ser numérico y de máximo 10 dígitos.");
+            return false;
+        }
+
+        // Validar que el número de factura sea numérico
+        if (!esNumerico(numeroFactura)) {
+            mostrarError("El número de factura debe ser numérico.");
+            return false;
+        }
+
+        // Validar el formato de la fecha de la factura (dd/MM/yyyy)
+        if (!esFechaValida(fechaFactura)) {
+            mostrarError("La fecha de la factura no tiene un formato válido (dd/MM/yyyy).");
+            return false;
+        }
+
+        // Validar que el valor del metro cuadrado sea numérico y positivo
+        if (!esDecimalPositivo(valorMetroCuadrado)) {
+            mostrarError("El valor por metro cuadrado debe ser un número positivo.");
+            return false;
+        }
+
+        // Validar que el valor de la administración sea numérico y positivo
+        if (!esDecimalPositivo(valorAdministracion)) {
+            mostrarError("El valor de la administración debe ser un número positivo.");
+            return false;
+        }
+
+        // Validar el formato de la fecha máxima de pago (dd/MM/yyyy)
+        if (!esFechaValida(fechaMaxPago)) {
+            mostrarError("La fecha máxima de pago no tiene un formato válido (dd/MM/yyyy).");
+            return false;
+        }
+
+        // Validar que el total a pagar sea numérico y positivo
+        if (!esDecimalPositivo(totalPagar)) {
+            mostrarError("El total a pagar debe ser un número positivo.");
+            return false;
+        }
+
+        // Si todas las validaciones pasan
+        return true;
+    }
+    
+    public boolean validarDatosMulta(String codigoMulta, String persona, String fechaMulta, String propiedad, 
+                                  String fechaEventoMulta, String evento, String valorMulta, String fechaMaxPago) {
+        // Verificar si los campos están vacíos
+        if (codigoMulta.isEmpty() || persona.isEmpty() || fechaMulta.isEmpty() || propiedad.isEmpty() ||
+            fechaEventoMulta.isEmpty() || evento.isEmpty() || valorMulta.isEmpty() || fechaMaxPago.isEmpty()) {
+            JOptionPane.showMessageDialog(null, 
+                "Todos los campos son obligatorios.", 
+                "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Verificar que el código de multa sea numérico
+        if (!esNumerico(codigoMulta)) {
+            JOptionPane.showMessageDialog(null, 
+                "El código de multa debe ser un número válido.", 
+                "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Validar el formato de la fecha (Ejemplo: "dd/MM/yyyy")
+        if (!esFechaValida(fechaMulta) || !esFechaValida(fechaEventoMulta) || !esFechaValida(fechaMaxPago)) {
+            JOptionPane.showMessageDialog(null, 
+                "Las fechas deben tener el formato dd/MM/yyyy.", 
+                "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Verificar que el valor de la multa sea numérico
+        if (!esNumerico(valorMulta)) {
+            JOptionPane.showMessageDialog(null, 
+                "El valor de la multa debe ser un número válido.", 
+                "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Si todas las validaciones pasan
+        return true;
+    }
+
+    
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Método auxiliar para verificar si una cadena es numérica
     private boolean esNumerico(String cadena) {
         try {
@@ -99,9 +204,26 @@ public class Validaciones {
         }
         return false;
     }
+    
+    // Método auxiliar para verificar si una cadena es un número decimal positivo
+    private boolean esDecimalPositivo(String cadena) {
+        try {
+            double valor = Double.parseDouble(cadena);
+            return valor > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
+    // Método auxiliar para verificar el formato de una fecha (dd/MM/yyyy)
+    private boolean esFechaValida(String fecha) {
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";  // Expresión regular para fechas en formato dd/MM/yyyy
+        return Pattern.matches(regex, fecha);
+    }
 
     // Método para mostrar mensajes de error
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "Error de Validación", JOptionPane.ERROR_MESSAGE);
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

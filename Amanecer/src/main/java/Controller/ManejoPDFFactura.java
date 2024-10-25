@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class ManejoPDFFactura {
     
-    private final String rutaCarpeta = "C:\\Users\\USUARIO\\Escritorio\\NetBeansProjects\\Amanecer\\";
+    private final String rutaCarpeta = "C:\\Users\\USUARIO\\Escritorio\\Amanecer\\Amanecer\\";
     private final String archivoJSON = rutaCarpeta + "Factura.json";
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     

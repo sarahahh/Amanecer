@@ -6,7 +6,9 @@ package View;
 
 
 import Controller.ManejoPDFFactura;
+import Controller.Validaciones;
 import Model.Factura;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -106,7 +108,7 @@ public class GenerarFactura extends javax.swing.JFrame {
         jLabel7.setText("Número de documento:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Propiedad:");
+        jLabel5.setText("Número de propiedad:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Valor metro cuadrado:");
@@ -135,14 +137,15 @@ public class GenerarFactura extends javax.swing.JFrame {
                 .addContainerGap(196, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel9)
                     .addComponent(jLabel6)
                     .addComponent(jLabel10)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Propietario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,22 +245,35 @@ public class GenerarFactura extends javax.swing.JFrame {
         String fechaMaxPago = FechaMaxPago.getText();
         String totalPagar = TotalPagar.getText();
 
-        // Crear una instancia de ManejoPDF
+        // Crear una instancia de la clase Validaciones
+        Validaciones validaciones = new Validaciones();
+
+        // Validar los datos ingresados antes de continuar
+        boolean datosValidos = validaciones.validarDatosFactura(
+            propietario, numeroDocumento, numeroFactura, fechaFactura, 
+            propiedad, valorMetroCuadrado, valorAdministracion, 
+            fechaMaxPago, totalPagar
+        );
+
+        if (!datosValidos) {
+            // Si los datos no son válidos, se detiene el proceso
+            return;
+        }
+
+        // Crear una instancia de ManejoPDFFactura
         ManejoPDFFactura ventanaManejoPDFFactura = new ManejoPDFFactura();
 
         // Guardar la factura en el archivo JSON
-        ventanaManejoPDFFactura.guardarFactura(propietario, numeroDocumento, numeroFactura, fechaFactura, propiedad, valorMetroCuadrado, valorAdministracion, fechaMaxPago, totalPagar);
+        ventanaManejoPDFFactura.guardarFactura(
+            propietario, numeroDocumento, numeroFactura, fechaFactura, 
+            propiedad, valorMetroCuadrado, valorAdministracion, 
+            fechaMaxPago, totalPagar
+        );
 
-        // Buscar la factura recién guardada por su número y asignarla a una variable
-        Factura factura = ventanaManejoPDFFactura.buscarFactura(numeroFactura);
-
-        // Verificar si la factura fue encontrada antes de intentar generar el PDF
-        if (factura != null) {
-            // Generar el PDF con los datos encontrados
-            ventanaManejoPDFFactura.generarPDFFactura(factura);
-        } else {
-            System.err.println("No se encontró la factura con el número: " + numeroFactura);
-        }
+        // Generar el PDF de la factura inmediatamente después de guardarla
+        ventanaManejoPDFFactura.generarPDFFactura(new Factura(propietario, numeroDocumento, numeroFactura, fechaFactura, 
+                                                               propiedad, valorMetroCuadrado, valorAdministracion, 
+                                                               fechaMaxPago, totalPagar));
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed

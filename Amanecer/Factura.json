@@ -1,35 +1,24 @@
 [
   {
-    "propietario": "sss",
-    "numeroDocumento": "12345",
-    "numeroFactura": "1212",
-    "fechaFactura": "asdf",
-    "propiedad": "1212",
-    "valorMetroCuadrado": "123",
-    "valorAdministracion": "123456789",
-    "fechaMaxPago": "sdfg",
-    "totalPagar": "123456"
+    "propietario": "sarah",
+    "numeroDocumento": "1013338862",
+    "numeroFactura": "102",
+    "fechaFactura": "24/10/2024",
+    "propiedad": "402",
+    "valorMetroCuadrado": "1432566",
+    "valorAdministracion": "656345",
+    "fechaMaxPago": "02/11/2024",
+    "totalPagar": "9345678"
   },
   {
-    "propietario": "aaa",
-    "numeroDocumento": "11",
-    "numeroFactura": "1212",
-    "fechaFactura": "cvbh",
-    "propiedad": "sdfgh",
-    "valorMetroCuadrado": "xcvbh",
-    "valorAdministracion": "dfghj",
-    "fechaMaxPago": "cvbhj",
-    "totalPagar": "sdftgy"
-  },
-  {
-    "propietario": "sddd",
-    "numeroDocumento": "12121212",
-    "numeroFactura": "edfc",
-    "fechaFactura": "sdc ",
-    "propiedad": "1212",
-    "valorMetroCuadrado": "sxcdf",
-    "valorAdministracion": "vfvgbh",
-    "fechaMaxPago": "cfvgbhgvcxz",
-    "totalPagar": "xdcfvggvfcdx"
+    "propietario": "angelo",
+    "numeroDocumento": "1107838887",
+    "numeroFactura": "101",
+    "fechaFactura": "24/10/2024",
+    "propiedad": "401",
+    "valorMetroCuadrado": "1546722",
+    "valorAdministracion": "456321",
+    "fechaMaxPago": "01/11/2024",
+    "totalPagar": "54321234"
   }
 ]

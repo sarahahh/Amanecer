@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  */
 public class ManejoPDFMulta {
     
-    private final String rutaCarpeta2 = "C:\\Users\\USUARIO\\Escritorio\\NetBeansProjects\\Amanecer\\";
+    private final String rutaCarpeta2 = "C:\\Users\\USUARIO\\Escritorio\\Amanecer\\Amanecer\\";
     private final String archivoJSON2 = rutaCarpeta2 + "Multa.json";
     private final Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
     

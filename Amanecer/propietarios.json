@@ -10,63 +10,33 @@
     "ocupacion": "estudiante"
   },
   {
-    "nombre": "camilo",
-    "tipoDocumento": "Cedula de extranjeria",
-    "numeroDocumento": "1013238862",
-    "edad": "40",
-    "email": "camilo@gmail.com",
-    "telefono": "3126404099",
-    "propiedad": "400",
-    "ocupacion": "contador"
-  },
-  {
-    "nombre": "maria",
-    "tipoDocumento": "Tarjeta de identidad",
-    "numeroDocumento": "1111125890",
-    "edad": "50",
-    "email": "mariaa@gmail.com",
-    "telefono": "3126404099",
+    "nombre": "angelo",
+    "tipoDocumento": "Cedula",
+    "numeroDocumento": "1107838887",
+    "edad": "19",
+    "email": "angelo@gmail.com",
+    "telefono": "3128780037",
     "propiedad": "401",
-    "ocupacion": "enfermera"
-  },
-  {
-    "nombre": "max",
-    "tipoDocumento": "Pasaporte",
-    "numeroDocumento": "1143284348523",
-    "edad": "30",
-    "email": "max@gmail.com",
-    "telefono": "3126404099",
-    "propiedad": "403",
     "ocupacion": "ingeniero"
   },
   {
-    "nombre": "sara",
-    "tipoDocumento": "Cedula de extranjeria",
-    "numeroDocumento": "1",
-    "edad": "2",
-    "email": "3",
-    "telefono": "4",
-    "propiedad": "405",
-    "ocupacion": "6"
+    "nombre": "santiago",
+    "tipoDocumento": "Tarjeta de identidad",
+    "numeroDocumento": "1234567890",
+    "edad": "19",
+    "email": "santi@gmail.com",
+    "telefono": "3207786618",
+    "propiedad": "403",
+    "ocupacion": "medico"
   },
   {
-    "nombre": "sa",
+    "nombre": "lukas",
     "tipoDocumento": "Cedula de extranjeria",
-    "numeroDocumento": "1",
-    "edad": "2",
-    "email": "3",
-    "telefono": "45",
-    "propiedad": "5",
-    "ocupacion": "7"
-  },
-  {
-    "nombre": "Sarah",
-    "tipoDocumento": "Cedula",
-    "numeroDocumento": "0",
-    "edad": "12",
-    "email": "sarah@gmail.com",
-    "telefono": "3126404099",
-    "propiedad": "406",
-    "ocupacion": "ingeniera"
+    "numeroDocumento": "1013787636",
+    "edad": "40",
+    "email": "luki@gmail.com",
+    "telefono": "3104596794",
+    "propiedad": "400",
+    "ocupacion": "profesor"
   }
 ]

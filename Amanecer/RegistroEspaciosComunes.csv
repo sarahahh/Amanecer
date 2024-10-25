@@ -1,6 +1,6 @@
 Nombre_Lugar;Hora_Inicio;Hora_Fin;Disponibilidad
-Biblioteca;66667777;99998888;NO
-Piscina;2;6;SI
-Sala de juegos;2;8;SI
-Salon de eventos;8;10;SI
-Sala de reuniones;7;9;SI
+Piscina;9:00am;6:00pm;SI
+Biblioteca;7:00am;7:00pm;NO
+Salon de eventos;10:00am;9:00pm;SI
+Sala de juegos;9:00am;5:00pm;NO
+Sala de reuniones;7:00am;7:00pm;SI
