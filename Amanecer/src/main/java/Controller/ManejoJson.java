@@ -85,12 +85,6 @@ public class ManejoJson {
         try (FileWriter file = new FileWriter("propietarios.json")) {
             file.write(json);
             file.flush();
-            
-            // Mostrar mensaje de éxito con JOptionPane
-            JOptionPane.showMessageDialog(null, 
-                "Propietario registrado exitosamente.", 
-                "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
-        
         } catch (IOException e) {
             
             e.printStackTrace();
@@ -99,7 +93,6 @@ public class ManejoJson {
             JOptionPane.showMessageDialog(null, 
                 "Error al registrar el propietario: " + e.getMessage(), 
                 "Error", JOptionPane.ERROR_MESSAGE);
-
         }
     }
     

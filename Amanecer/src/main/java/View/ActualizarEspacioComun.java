@@ -82,13 +82,12 @@ public class ActualizarEspacioComun extends javax.swing.JFrame {
             }
         });
 
-        Nombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piscina", "Biblioteca", "Sala de juegos", "Sala de reuniones", "salon de fiesta" }));
+        Nombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piscina", "Biblioteca", "Salon de eventos", "Sala de juegos", "Sala de reuniones" }));
 
         bGuardar.setBackground(new java.awt.Color(115, 99, 79));
         bGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bGuardar.setForeground(new java.awt.Color(0, 0, 0));
         bGuardar.setText("GUARDAR");
-        bGuardar.setActionCommand("GUARDAR");
         bGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bGuardarActionPerformed(evt);

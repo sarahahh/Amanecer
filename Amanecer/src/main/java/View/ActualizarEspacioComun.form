@@ -205,9 +205,9 @@
           <StringArray count="5">
             <StringItem index="0" value="Piscina"/>
             <StringItem index="1" value="Biblioteca"/>
-            <StringItem index="2" value="Sala de juegos"/>
-            <StringItem index="3" value="Sala de reuniones"/>
-            <StringItem index="4" value="salon de fiesta"/>
+            <StringItem index="2" value="Salon de eventos"/>
+            <StringItem index="3" value="Sala de juegos"/>
+            <StringItem index="4" value="Sala de reuniones"/>
           </StringArray>
         </Property>
       </Properties>
@@ -227,7 +227,6 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="GUARDAR"/>
-        <Property name="actionCommand" type="java.lang.String" value="GUARDAR"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bGuardarActionPerformed"/>

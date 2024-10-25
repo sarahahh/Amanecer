@@ -5,7 +5,9 @@
 package View;
 
 import Controller.ManejoJson;
+import Controller.Validaciones;
 import Model.Persona;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -236,15 +238,29 @@ public class RegistroPropietario extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = Nombre.getText();
         String tipoDocumento = (String)TipoDocumento.getSelectedItem();
-        String edad = Edad.getText();
         String documento = Documento.getText();
+        String edad = Edad.getText();
         String correo = Correo.getText();
         String telefono = Telefono.getText();
         String propiedad = Propiedad.getText();
         String ocupacion = Ocupacion.getText();
         
-        ManejoJson ventanaManejoJson = new ManejoJson();
-        ventanaManejoJson.guardarJson(nombre, tipoDocumento, documento, edad, correo, telefono, propiedad, ocupacion);
+        // Crear una instancia de la clase Validaciones
+        Validaciones validaciones = new Validaciones();
+
+        // Validar los datos ingresados
+        if (validaciones.validarDatosRegistro(nombre, tipoDocumento, documento, edad, correo, telefono, propiedad, ocupacion)) {
+            // Si los datos son válidos, guardar en JSON
+            ManejoJson ventanaManejoJson = new ManejoJson();
+            ventanaManejoJson.guardarJson(nombre, tipoDocumento, documento, edad, correo, telefono, propiedad, ocupacion);
+
+            // Mostrar mensaje de éxito
+            JOptionPane.showMessageDialog(this, 
+                "Registro guardado exitosamente.", 
+                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Si los datos no son válidos, el método `validarDatos` mostrará los errores.
+        }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed

@@ -58,5 +58,15 @@
     "telefono": "45",
     "propiedad": "5",
     "ocupacion": "7"
+  },
+  {
+    "nombre": "Sarah",
+    "tipoDocumento": "Cedula",
+    "numeroDocumento": "0",
+    "edad": "12",
+    "email": "sarah@gmail.com",
+    "telefono": "3126404099",
+    "propiedad": "406",
+    "ocupacion": "ingeniera"
   }
 ]
