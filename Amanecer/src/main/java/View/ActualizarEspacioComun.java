@@ -5,6 +5,8 @@
 package View;
 
 import Controller.ManejoCSV;
+import Model.EspacioComun;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,11 +36,12 @@ public class ActualizarEspacioComun extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Disponibilidad = new javax.swing.JComboBox<>();
-        Nombre = new javax.swing.JTextField();
         HoraInicio = new javax.swing.JTextField();
         HoraFin = new javax.swing.JTextField();
-        bActualizar = new javax.swing.JButton();
+        bBuscar = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
+        Nombre = new javax.swing.JComboBox<>();
+        bGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +49,7 @@ public class ActualizarEspacioComun extends javax.swing.JFrame {
         jLabel1.setText("ACTUALIZAR ESPACIOS COMUNES");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("Nombre del lugar:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Horario inicio:");
@@ -59,18 +62,18 @@ public class ActualizarEspacioComun extends javax.swing.JFrame {
 
         Disponibilidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
 
-        bActualizar.setBackground(new java.awt.Color(115, 99, 79));
-        bActualizar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        bActualizar.setForeground(new java.awt.Color(0, 0, 0));
-        bActualizar.setText("GUARDAR");
-        bActualizar.addActionListener(new java.awt.event.ActionListener() {
+        bBuscar.setBackground(new java.awt.Color(115, 99, 79));
+        bBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        bBuscar.setText("BUSCAR");
+        bBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bActualizarActionPerformed(evt);
+                bBuscarActionPerformed(evt);
             }
         });
 
-        bSalir.setBackground(new java.awt.Color(115, 99, 79));
-        bSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bSalir.setBackground(new java.awt.Color(191, 182, 170));
+        bSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bSalir.setForeground(new java.awt.Color(0, 0, 0));
         bSalir.setText("SALIR");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -79,88 +82,114 @@ public class ActualizarEspacioComun extends javax.swing.JFrame {
             }
         });
 
+        Nombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piscina", "Biblioteca", "Sala de juegos", "Sala de reuniones", "salon de fiesta" }));
+
+        bGuardar.setBackground(new java.awt.Color(115, 99, 79));
+        bGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        bGuardar.setText("GUARDAR");
+        bGuardar.setActionCommand("GUARDAR");
+        bGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGuardarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(208, 208, 208))
             .addGroup(layout.createSequentialGroup()
-                .addGap(191, 191, 191)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(722, 722, 722)
+                        .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(136, 136, 136)
-                                .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(31, 31, 31))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addGap(221, 221, 221)
+                        .addGap(190, 190, 190)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(HoraFin, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(HoraInicio, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Disponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(189, 189, 189))
+                            .addComponent(HoraInicio)
+                            .addComponent(HoraFin)
+                            .addComponent(Disponibilidad, 0, 132, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jLabel2)
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bGuardar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73)
+                                .addComponent(bBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(73, 73, 73)
                 .addComponent(jLabel1)
-                .addGap(71, 71, 71)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bBuscar))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(HoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(53, 53, 53)))
-                                .addGap(58, 58, 58))
-                            .addComponent(HoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addComponent(Disponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGap(93, 93, 93)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(HoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel3)
-                        .addGap(33, 33, 33)
                         .addComponent(jLabel4)
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bActualizar)
-                    .addComponent(bSalir))
-                .addGap(91, 91, 91))
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(HoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(Disponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(bGuardar)
+                .addGap(34, 34, 34)
+                .addComponent(bSalir)
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarActionPerformed
+    private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
         // TODO add your handling code here:
-        String nombre = Nombre.getText();
-        String horaInicio = HoraInicio.getText();
-        String horaFin = HoraFin.getText();
-        String disponibilidad = (String)Disponibilidad.getSelectedItem();
+        // Obtener el nombre del lugar seleccionado en el JComboBox
+        String nombreLugar = (String) Nombre.getSelectedItem();
+
         
-        ManejoCSV ventanaManejoCSV = new ManejoCSV();
-        ventanaManejoCSV.agregarYGuardarDatos(nombre, horaInicio, horaFin, disponibilidad);
-    }//GEN-LAST:event_bActualizarActionPerformed
+        ManejoCSV manejoCSV = new ManejoCSV();
+        manejoCSV.cargarDatosDesdeCSV("RegistroEspaciosComunes.csv");
+ 
+        // Buscar el espacio correspondiente en la lista
+        EspacioComun espacioEncontrado = manejoCSV.buscarLugar(nombreLugar);
+
+        if (espacioEncontrado != null) {
+            // Mostrar los datos encontrados en los componentes de la interfaz
+            HoraInicio.setText(espacioEncontrado.getHoraInicio());
+            HoraFin.setText(espacioEncontrado.getHoraFin());
+            Disponibilidad.setSelectedItem(espacioEncontrado.getDisponibilidad());
+        } else {
+            // Si no se encuentra, mostrar un mensaje de error
+            JOptionPane.showMessageDialog(this, 
+            "Espacio no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         // TODO add your handling code here:
@@ -168,6 +197,42 @@ public class ActualizarEspacioComun extends javax.swing.JFrame {
         this.setVisible(false);
         ventanaPrincipal.setVisible(true);
     }//GEN-LAST:event_bSalirActionPerformed
+
+    private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
+        // TODO add your handling code here:
+        // Obtener el nombre del espacio del JComboBox y los valores editados
+        String nombreLugar = (String) Nombre.getSelectedItem();
+        String nuevaHoraInicio = HoraInicio.getText();
+        String nuevaHoraFin = HoraFin.getText();
+        String nuevaDisponibilidad = (String) Disponibilidad.getSelectedItem();
+
+        // Cargar los datos actuales desde el archivo CSV
+        ManejoCSV manejoCSV = new ManejoCSV();
+        manejoCSV.cargarDatosDesdeCSV("RegistroEspaciosComunes.csv");
+
+        // Buscar el espacio en la lista
+        EspacioComun espacio = manejoCSV.buscarLugar(nombreLugar);
+
+        if (espacio != null) {
+            // Actualizar los datos del espacio
+            espacio.setHoraInicio(nuevaHoraInicio);
+            espacio.setHoraFin(nuevaHoraFin);
+            espacio.setDisponibilidad(nuevaDisponibilidad);
+
+            // Guardar la lista completa en el archivo CSV actualizado
+            manejoCSV.guardarListaEnCSV("RegistroEspaciosComunes.csv");
+
+            // Confirmación de éxito
+            JOptionPane.showMessageDialog(this, 
+                "Datos actualizados exitosamente.", 
+                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Si no se encuentra, mostrar un mensaje de error
+            JOptionPane.showMessageDialog(this, 
+                "Error al actualizar: Espacio no encontrado.", 
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,8 +273,9 @@ public class ActualizarEspacioComun extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Disponibilidad;
     private javax.swing.JTextField HoraFin;
     private javax.swing.JTextField HoraInicio;
-    private javax.swing.JTextField Nombre;
-    private javax.swing.JButton bActualizar;
+    private javax.swing.JComboBox<String> Nombre;
+    private javax.swing.JButton bBuscar;
+    private javax.swing.JButton bGuardar;
     private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

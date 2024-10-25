@@ -94,5 +94,25 @@ public class ManejoCSV {
         return null;  // Usuario no encontrado
     }
 
+    public void guardarListaEnCSV(String rutaArchivo) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
+        // Escribir el encabezado
+        bw.write("Nombre_Lugar;Hora_Inicio;Hora_Fin;Disponibilidad\n");
+
+        // Escribir los datos actualizados de cada espacio en la lista
+        for (EspacioComun espacio : listaDatos) {
+            bw.write(String.join(";", 
+                espacio.getNombreLugar(), 
+                espacio.getHoraInicio(), 
+                espacio.getHoraFin(), 
+                espacio.getDisponibilidad()) + "\n");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, 
+            "Error al guardar el archivo: " + e.getMessage(), 
+            "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
 }

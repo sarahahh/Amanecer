@@ -14,6 +14,7 @@ View\EspaciosComunes.class
 View\BuscarFactura$1.class
 View\InicioSesion.class
 Controller\ManejoCSV.class
+com\mycompany\amanecer\Amanecer$1.class
 Controller\ManejoPDFMulta$1.class
 View\BuscarMulta$1.class
 View\RegistroPropietario$2.class
@@ -53,6 +54,7 @@ View\InicioSesion$1.class
 View\Administrador$3.class
 View\Principal$2.class
 View\Administrador.class
+View\ActualizarEspacioComun$4.class
 Controller\ManejoJson.class
 View\GenerarFactura$2.class
 View\GenerarMulta$4.class

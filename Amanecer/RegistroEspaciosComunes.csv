@@ -1,5 +1,5 @@
-Nombre;HoraInicio;HoraFin;Disponibilidad
-Biblioteca;6;9;NO
+Nombre_Lugar;Hora_Inicio;Hora_Fin;Disponibilidad
+Biblioteca;66667777;99998888;NO
 Piscina;2;6;SI
 Sala de juegos;2;8;SI
 Salon de eventos;8;10;SI
