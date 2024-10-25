@@ -1,0 +1,22 @@
+[
+  {
+    "codigoMulta": "123",
+    "persona": "sarah",
+    "fechaMulta": "25-10-2024",
+    "propiedad": "400",
+    "fechaEventoMulta": "2-10-2024",
+    "evento": "robo en tienda",
+    "valorMulta": "12345678",
+    "fechaMaxPago": "30-10-2024"
+  },
+  {
+    "codigoMulta": "123",
+    "persona": "sarah",
+    "fechaMulta": "1234",
+    "propiedad": "12345",
+    "fechaEventoMulta": "23456i",
+    "evento": "345678",
+    "valorMulta": "0000000",
+    "fechaMaxPago": "sdwefsrdfg"
+  }
+]

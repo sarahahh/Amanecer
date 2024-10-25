@@ -1,0 +1,35 @@
+[
+  {
+    "propietario": "sss",
+    "numeroDocumento": "12345",
+    "numeroFactura": "1212",
+    "fechaFactura": "asdf",
+    "propiedad": "1212",
+    "valorMetroCuadrado": "123",
+    "valorAdministracion": "123456789",
+    "fechaMaxPago": "sdfg",
+    "totalPagar": "123456"
+  },
+  {
+    "propietario": "aaa",
+    "numeroDocumento": "11",
+    "numeroFactura": "1212",
+    "fechaFactura": "cvbh",
+    "propiedad": "sdfgh",
+    "valorMetroCuadrado": "xcvbh",
+    "valorAdministracion": "dfghj",
+    "fechaMaxPago": "cvbhj",
+    "totalPagar": "sdftgy"
+  },
+  {
+    "propietario": "sddd",
+    "numeroDocumento": "12121212",
+    "numeroFactura": "edfc",
+    "fechaFactura": "sdc ",
+    "propiedad": "1212",
+    "valorMetroCuadrado": "sxcdf",
+    "valorAdministracion": "vfvgbh",
+    "fechaMaxPago": "cfvgbhgvcxz",
+    "totalPagar": "xdcfvggvfcdx"
+  }
+]
